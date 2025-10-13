@@ -12,13 +12,13 @@ resource "aws_vpc" "main" {
 
 # Create Subnets
 resource "aws_subnet" "public" {
-  vpc_id                 = aws_vpc.main.id
-  cidr_block             = var.public_subnet_cidr
-  availability_zone      = var.availability_zone
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_cidr
+  availability_zone       = var.availability_zone
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "public-subnet"
+    Name        = "public-subnet"
     Environment = var.environment
   }
 }
@@ -29,7 +29,7 @@ resource "aws_subnet" "private" {
   availability_zone = var.availability_zone
 
   tags = {
-    Name = "private-subnet"
+    Name        = "private-subnet"
     Environment = var.environment
   }
 }
@@ -83,17 +83,17 @@ resource "aws_security_group" "example" {
   }
 
   tags = {
-    Name = "example-security-group"
+    Name        = "example-security-group"
     Environment = var.environment
   }
 }
 
 # EC2 Instance in Private Subnet 
 resource "aws_instance" "private_app" {
-  ami           = "ami-052064a798f08f0d3"  
+  ami           = "ami-052064a798f08f0d3"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.private.id
-  
+
   vpc_security_group_ids = [aws_security_group.example.id]
 
   tags = {
