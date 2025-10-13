@@ -90,7 +90,7 @@ resource "aws_security_group" "example" {
 
 # EC2 Instance in Private Subnet 
 resource "aws_instance" "private_app" {
-  ami           = "ami-0c55b159cbfafe1f0"  
+  ami           = "ami-052064a798f08f0d3"  
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.private.id
   
