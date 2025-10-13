@@ -33,3 +33,13 @@ resource "aws_subnet" "private" {
     Environment = var.environment
   }
 }
+
+# Main Route Table
+resource "aws_route_table" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name        = "main-route-table"
+    Environment = var.environment
+  }
+}
