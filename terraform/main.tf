@@ -7,6 +7,5 @@ resource "aws_vpc" "main" {
   tags = {
     Name        = var.environment
     Environment = "Lab"
-    Managed_By  = "Terraform"
   }
 }
