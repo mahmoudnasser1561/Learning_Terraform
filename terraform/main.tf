@@ -87,3 +87,17 @@ resource "aws_security_group" "example" {
     Environment = var.environment
   }
 }
+
+# EC2 Instance in Private Subnet 
+resource "aws_instance" "private_app" {
+  ami           = "ami-0c55b159cbfafe1f0"  
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.private.id
+  
+  vpc_security_group_ids = [aws_security_group.example.id]
+
+  tags = {
+    Name        = "private-app-server"
+    Environment = var.environment
+  }
+}
