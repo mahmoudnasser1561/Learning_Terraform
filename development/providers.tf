@@ -10,11 +10,11 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
-  
+
   default_tags {
     tags = {
-      Project     = "Terraform Testing"
-      Managed_By  = "Terraform"
+      Project    = "Terraform Testing"
+      Managed_By = "Terraform"
     }
   }
 }
