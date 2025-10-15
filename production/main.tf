@@ -1,3 +1,14 @@
+# Retrieve the availability zones in the target region
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+# Retrieve information about the target region
+data "aws_region" "current" {}
+
+# Retrieve information about the user and account
+data "aws_caller_identity" "current" {}
+
 # Static configuration with hardcoded values
 resource "aws_vpc" "production" {
   cidr_block           = "10.0.0.0/16"
