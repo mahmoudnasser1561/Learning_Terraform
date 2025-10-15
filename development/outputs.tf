@@ -6,7 +6,7 @@ output "account_id" {
 
 output "region_name" {
   description = "The current AWS region"
-  value = data.aws_region.current.region
+  value       = data.aws_region.current.region
 }
 
 output "available_AZs" {
