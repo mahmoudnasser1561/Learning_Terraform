@@ -1,3 +1,21 @@
+# Get information about the current region
+data "aws_region" "current" {}
+
+locals {
+  # Common tags for all resources
+  tags = {
+    Environment = var.environment
+    Project     = "terraform-demo"
+    Owner       = "infrastructure-team"
+    CostCenter  = "cc-1234"
+    Region      = data.aws_region.current.name
+    ManagedBy   = "terraform"
+  }
+  
+  # Common name prefix for resources
+  name_prefix = "${var.environment}-"
+}
+
 # Static configuration with repetitive elements
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
